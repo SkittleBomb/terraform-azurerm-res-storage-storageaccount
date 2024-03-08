@@ -107,24 +107,24 @@ module "test" {
 
   private_endpoints = {
     blob = {
-      subresource_name                = "blob"
-      private_dns_zone_resource_ids   = [azurerm_private_dns_zone.blob.id]
-      subnet_resource_id              = azurerm_subnet.this.id
+      subresource_name              = "blob"
+      private_dns_zone_resource_ids = [azurerm_private_dns_zone.blob.id]
+      subnet_resource_id            = azurerm_subnet.this.id
     },
     queue = {
-      subresource_name                = "queue"
-      private_dns_zone_resource_ids   = [azurerm_private_dns_zone.queue.id]
-      subnet_resource_id              = azurerm_subnet.this.id
+      subresource_name              = "queue"
+      private_dns_zone_resource_ids = [azurerm_private_dns_zone.queue.id]
+      subnet_resource_id            = azurerm_subnet.this.id
     },
     table = {
-      subresource_name                = "table"
-      private_dns_zone_resource_ids   = [azurerm_private_dns_zone.table.id]
-      subnet_resource_id              = azurerm_subnet.this.id
+      subresource_name              = "table"
+      private_dns_zone_resource_ids = [azurerm_private_dns_zone.table.id]
+      subnet_resource_id            = azurerm_subnet.this.id
     },
     file = {
-      subresource_name                = "file"
-      private_dns_zone_resource_ids   = [azurerm_private_dns_zone.file.id]
-      subnet_resource_id              = azurerm_subnet.this.id
+      subresource_name              = "file"
+      private_dns_zone_resource_ids = [azurerm_private_dns_zone.file.id]
+      subnet_resource_id            = azurerm_subnet.this.id
     }
   }
 

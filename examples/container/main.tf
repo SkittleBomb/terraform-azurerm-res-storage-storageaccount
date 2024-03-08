@@ -104,7 +104,7 @@ module "test" {
       container_access_type = "private"
     }
   }
-  
+
 
   tags = {
     environment = "staging"

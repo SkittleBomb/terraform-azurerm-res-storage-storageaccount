@@ -4,7 +4,7 @@ resource "azurerm_private_endpoint" "this" {
   location                      = coalesce(each.value.location, var.location, local.resource_group_location)
   resource_group_name           = each.value.resource_group_name != null ? each.value.resource_group_name : var.resource_group_name
   subnet_id                     = each.value.subnet_resource_id
-  custom_network_interface_name = each.value.network_interface_name  != null ? each.value.network_interface_name : "${var.name}-${each.value.subresource_name}-private-endpoint-nic"
+  custom_network_interface_name = each.value.network_interface_name != null ? each.value.network_interface_name : "${var.name}-${each.value.subresource_name}-private-endpoint-nic"
   tags                          = each.value.tags
   private_service_connection {
     name                           = each.value.private_service_connection_name != null ? each.value.private_service_connection_name : "${var.name}-${each.value.subresource_name}-private-service-connection"
