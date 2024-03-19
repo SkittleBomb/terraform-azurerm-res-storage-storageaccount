@@ -15,3 +15,15 @@ locals {
     ]
   ]) : "${assoc.pe_key}-${assoc.asg_key}" => assoc }
 }
+
+locals {
+  containers_role_assignments = flatten([
+    for ck, cv in var.containers : [
+      for rak, rav in cv.role_assignments : {
+        container_key       = ck
+        role_assignment_key = rak
+        role_assignment     = rav
+      }
+    ]
+  ])
+}

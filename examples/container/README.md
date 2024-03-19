@@ -23,6 +23,8 @@ provider "azurerm" {
   storage_use_azuread = true
 }
 
+# We need this to get the object_id of the current user
+data "azurerm_client_config" "current" {}
 
 ## Section to provide a random Azure region for the resource group
 # This allows us to randomize the region for the resource group.
@@ -104,10 +106,22 @@ module "test" {
     blob_container0 = {
       name                  = "blob-container-${random_string.this.result}-0"
       container_access_type = "private"
+      role_assignments = {
+        rbac_storage_blob_data_reader = {
+          role_definition_id_or_name = "Storage Blob Data Reader"
+          principal_id               = data.azurerm_client_config.current.object_id
+        }
+      }
     }
     blob_container1 = {
       name                  = "blob-container-${random_string.this.result}-1"
       container_access_type = "private"
+      role_assignments = {
+        rbac_storage_blob_data_reader = {
+          role_definition_id_or_name = "Storage Blob Data Reader"
+          principal_id               = data.azurerm_client_config.current.object_id
+        }
+      }
     }
   }
 
@@ -146,6 +160,7 @@ The following resources are used by this module:
 - [azurerm_virtual_network.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network) (resource)
 - [random_integer.region_index](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/integer) (resource)
 - [random_string.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) (resource)
+- [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) (data source)
 
 <!-- markdownlint-disable MD013 -->
 ## Required Inputs
