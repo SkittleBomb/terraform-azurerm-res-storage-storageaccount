@@ -13,7 +13,7 @@ resource "azurerm_storage_account" "this" {
   cross_tenant_replication_enabled  = var.cross_tenant_replication_enabled
   access_tier                       = var.access_tier
   edge_zone                         = var.edge_zone
-  enable_https_traffic_only         = true
+  https_traffic_only_enabled        = true
   min_tls_version                   = "TLS1_2"
   allow_nested_items_to_be_public   = var.allow_nested_items_to_be_public
   shared_access_key_enabled         = var.shared_access_key_enabled
